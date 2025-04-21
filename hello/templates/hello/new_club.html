@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Club Registration</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        input {
+            margin-bottom: 15px;
+            padding: 8px;
+            font-size: 16px;
+            width: 200px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Please enter the details of your club:</h1>
+	<form method="POST" action="{% url 'save_club' %}">
+		{% csrf_token %}
+        <label for="club-name">Name:</label>
+        <input type="text" id="club-name" name="club_name">
+
+        <label for="num-courts">Number of courts:</label>
+        <input type="number" id="num-courts" name="num_courts">
+
+        <button type="submit">Enter</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<h2>Club Report</h2>
+<p><strong>Total bookings last month:</strong> {{ total_bookings }}</p>
+<p><strong>Most commonly booked court:</strong> {{ most_booked_court }}</p>
+
+<!-- Flexbox to arrange the charts side by side and stack on smaller screens -->
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+  <div class="chart-container">
+    <canvas id="agePieChart"></canvas>
+  </div>
+  <div class="chart-container">
+    <canvas id="interestPieChart"></canvas>
+  </div>
+</div>
+
+<!-- Return Button -->
+<button onclick="window.location.href='{% url 'club_landing' %}'">Return to Club Landing</button>
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Chart.js Config -->
+<script>
+  const ageData = {
+    labels: {{ age_labels|safe }},
+    datasets: [{
+      label: "Age Groups",
+      data: {{ age_data|safe }},
+      backgroundColor: ['#4dc9f6','#f67019','#f53794','#537bc4']
+    }]
+  };
+
+  const interestData = {
+    labels: {{ interest_labels|safe }},
+    datasets: [{
+      label: "Interest Levels",
+      data: {{ interest_data|safe }},
+      backgroundColor: ['#34a853', '#fbbc05', '#ea4335']
+    }]
+  };
+
+  new Chart(document.getElementById("agePieChart"), {
+    type: 'pie',
+    data: ageData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById("interestPieChart"), {
+    type: 'pie',
+    data: interestData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+</script>
+
+<!-- Chart Container Styling -->
+<style>
+  .chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>

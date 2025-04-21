@@ -1,0 +1,20 @@
+<!DOCTYPE html>                                                                                                                                                    
+<html lang="en">
+
+<form method="POST" action="{% url 'save_user' %}">
+  {% csrf_token %}
+  <label>Name:</label>
+  <input type="text" name="name" required><br><br>
+
+  <label>Age:</label>
+  <input type="number" name="age" required><br><br>
+
+  <label>Interest Level:</label>
+  <select name="interest" required>
+    <option value="Beginner">Beginner</option>
+    <option value="Intermediate">Intermediate</option>
+    <option value="Pro">Pro</option>
+  </select><br><br>
+
+  <button type="submit">Enter</button>
+</form>

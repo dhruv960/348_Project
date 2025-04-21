@@ -1,0 +1,16 @@
+<!-- club_booking_chooser.html -->
+<h2>Select the club to book at:</h2>
+{% if error_message %}
+    <p style="color:red;">{{ error_message }}</p>
+    {% elif success_message %}
+    <p style="color:green;">{{ success_message }}</p>
+{% endif %}
+<form method="POST" action="{% url 'booking_details' %}">
+  {% csrf_token %}
+  <select name="club_id">
+    {% for club in clubs %}
+      <option value="{{ club.club_id }}">{{ club.name }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Next</button>
+</form>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Landing</title>
+</head>
+<body>
+    <h1>Club ID: {{ club.club_id }}</h1>
+    <p><strong>Please do not lose this.</strong></p>
+	<button onclick="location.href='{% url 'court_update' club.club_id %}'">Update Number of Courts</button>
+    <button onclick="location.href='{% url 'club_report'  %}'">View Monthly User Data</button>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Landing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>User ID: {{ user.user_id }} — please do not lose this</h2>
+    
+    <button onclick="location.href='{% url 'add_club' %}'">Add Club</button>
+    <button onclick="location.href='{% url 'club_booking_chooser' %}'">Make Booking</button>
+    <button onclick="location.href='{% url 'user_monthly_report' %}'">View Play History</button>
+</body>
